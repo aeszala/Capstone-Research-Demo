@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://eadm1a62dquw"]
+
+[ext_resource type="Script" uid="uid://cu8pb7nggy3cw" path="res://assets/scripts/player_controller.gd" id="1_s027a"]
+[ext_resource type="Texture2D" uid="uid://ctdp3xtn5bxga" path="res://assets/sprites/playerSpriteSheet.png" id="2_s027a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14505"]
+atlas = ExtResource("2_s027a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wcc8"]
+atlas = ExtResource("2_s027a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sknh"]
+atlas = ExtResource("2_s027a")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gfpk"]
+atlas = ExtResource("2_s027a")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hrit"]
+atlas = ExtResource("2_s027a")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo5bu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14505")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wcc8")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sknh")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gfpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hrit")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fblen"]
+size = Vector2(16, 27)
+
+[node name="Player" type="CharacterBody2D" unique_id=312731010]
+script = ExtResource("1_s027a")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2057779407]
+zoom = Vector2(1.5, 1.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1066177443]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_xo5bu")
+animation = &"run"
+frame = 1
+frame_progress = 0.5739714
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1042720962]
+position = Vector2(1, -13.5)
+shape = SubResource("RectangleShape2D_fblen")
