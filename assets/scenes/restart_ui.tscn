@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dshcsygghjist"]
+
+[ext_resource type="Theme" uid="uid://cmsegf60fr30w" path="res://assets/menu_theme.tres" id="1_qdfej"]
+[ext_resource type="PackedScene" uid="uid://bt3kmecjoq1dk" path="res://assets/scenes/replay.tscn" id="1_uu845"]
+[ext_resource type="Texture2D" uid="uid://cs0g53fxy0tow" path="res://assets/sprites/background.png" id="2_07vdu"]
+[ext_resource type="PackedScene" uid="uid://c57ahxarksy1a" path="res://assets/scenes/quit.tscn" id="2_qdfej"]
+[ext_resource type="Script" uid="uid://ytbxgyvftmga" path="res://assets/scripts/replay.gd" id="3_a858t"]
+[ext_resource type="Script" uid="uid://g8w7pqtiky3r" path="res://assets/scripts/quit.gd" id="4_ma05u"]
+
+[node name="Restart UI" type="Control" unique_id=432359460]
+z_index = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_qdfej")
+
+[node name="Background" type="TextureRect" parent="." unique_id=720689414]
+layout_mode = 0
+offset_left = -908.0
+offset_top = -490.0
+offset_right = 1844.0
+offset_bottom = 1558.0
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("2_07vdu")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1493152774]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2120473500]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="You Win!" type="RichTextLabel" parent="PanelContainer/VBoxContainer" unique_id=300871665]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "YOU WON!"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Replay" parent="PanelContainer/VBoxContainer" unique_id=1778892780 instance=ExtResource("1_uu845")]
+layout_mode = 2
+script = ExtResource("3_a858t")
+
+[node name="Quit" parent="PanelContainer/VBoxContainer" unique_id=1399645705 instance=ExtResource("2_qdfej")]
+layout_mode = 2
+script = ExtResource("4_ma05u")
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Replay" to="PanelContainer/VBoxContainer/Replay" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="PanelContainer/VBoxContainer/Quit" method="_on_pressed"]

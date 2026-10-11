@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bt3kmecjoq1dk"]
+
+[node name="Replay" type="Button" unique_id=1778892780]
+text = "Play again"
